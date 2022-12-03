@@ -1,4 +1,5 @@
-import { Button, Card, List, Typography } from "antd";
+import { Breadcrumb, Button, Card, List, Typography } from "antd";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 import { fetcher, POKEMON_LIST_API } from "../constants";
@@ -30,6 +31,9 @@ export default function Home() {
 
   return (
     <>
+      <Breadcrumb>
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+      </Breadcrumb>
       <Typography.Title>Pokemon Page with Ant Design</Typography.Title>
       <List
         loadMore={
@@ -51,7 +55,9 @@ export default function Home() {
         dataSource={dataSource}
         renderItem={(item) => (
           <List.Item>
-            <Card bordered>{item.name}</Card>
+            <Link href={`/${item.name}`}>
+              <Card bordered>{item.name}</Card>
+            </Link>
           </List.Item>
         )}
       />
