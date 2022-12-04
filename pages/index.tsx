@@ -1,7 +1,8 @@
-import { Breadcrumb, Button, Card, List, Typography } from "antd";
+import { Button, Card, List, Typography } from "antd";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import useSWR from "swr";
+import MainMenu from "../components/MainMenu";
 import { fetcher, POKEMON_LIST_API } from "../constants";
 import { PokemonListResponse, Result } from "../types";
 
@@ -31,9 +32,7 @@ export default function Home() {
 
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-      </Breadcrumb>
+      <MainMenu />
       <Typography.Title>Pokemon Page with Ant Design</Typography.Title>
       <List
         loadMore={

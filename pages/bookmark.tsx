@@ -1,16 +1,19 @@
-import { Breadcrumb, Card, List, Tag, Typography } from "antd";
+import { Card, List, Tag, Typography } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import MainMenu from "../components/MainMenu";
+import { Bookmark } from "../types/bookmark";
 
 const BookmarkPage = () => {
-  const [bookmarkList, setBookmarkList] = useState([]);
+  const [bookmarkList, setBookmarkList] = useState<Bookmark[]>([]);
   useEffect(() => {
     let arr = [];
     for (let i = 0; i < localStorage.length; i++) {
       const key = localStorage.key(i);
       if (key && key.includes("pokemon")) {
-        arr.push(JSON.parse(localStorage.getItem(key)));
+        const item = localStorage.getItem(key) || "";
+        arr.push(JSON.parse(item));
       }
     }
 
@@ -19,12 +22,7 @@ const BookmarkPage = () => {
 
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>
-          <Link href="/">Home</Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>My Bookmark</Breadcrumb.Item>
-      </Breadcrumb>
+      <MainMenu />
       <Typography.Title>My Bookmark</Typography.Title>
       <List
         grid={{

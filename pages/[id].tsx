@@ -1,15 +1,8 @@
-import {
-  Breadcrumb,
-  Button,
-  Descriptions,
-  Layout,
-  Tag,
-  Typography,
-} from "antd";
+import { Button, Descriptions, Tag, Typography } from "antd";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import MainMenu from "../components/MainMenu";
 import { fetcher, POKEMON_LIST_API } from "../constants";
 import { PokemonDetailResponse } from "../types/id";
 
@@ -39,12 +32,7 @@ const Detail = () => {
 
   return (
     <>
-      <Breadcrumb>
-        <Breadcrumb.Item>
-          <Link href="/">Home</Link>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>{name}</Breadcrumb.Item>
-      </Breadcrumb>
+      <MainMenu />
       <Typography.Title>{name}</Typography.Title>
 
       <Image alt="pokemon picture" src={frontSource} width={226} height={218} />
